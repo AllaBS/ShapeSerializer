@@ -20,9 +20,8 @@ public class JsonSerializer implements Serializer {
 	private Map<String, Serializer> serializers = new HashMap<>();
 
 	public JsonSerializer() {
-	//	serializers.put(Square.class.getCanonicalName(), new SquareXmlSerializer());
 		serializers.put(Circle.class.getCanonicalName(), new CircleJsonSerializer());
-	//	serializers.put(Triangle.class.getCanonicalName(), new TriangleXmlSerializer());
+		serializers.put(Triangle.class.getCanonicalName(), new TriangleJsonSerializer());
 	//	serializers.put(Group.class.getCanonicalName(), new GroupXmlSerializer());
 		
 	}
