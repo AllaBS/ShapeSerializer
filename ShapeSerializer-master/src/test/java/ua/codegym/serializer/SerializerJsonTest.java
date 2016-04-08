@@ -10,7 +10,6 @@ import org.junit.Test;
 import ua.codegym.serializer.shape.Circle;
 import ua.codegym.serializer.shape.Group;
 import ua.codegym.serializer.shape.Shape;
-import ua.codegym.serializer.shape.Square;
 import ua.codegym.serializer.shape.Triangle;
 
 public class SerializerJsonTest {
