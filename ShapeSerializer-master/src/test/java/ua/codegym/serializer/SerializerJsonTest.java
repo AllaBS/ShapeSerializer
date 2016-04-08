@@ -8,7 +8,9 @@ import java.io.IOException;
 import org.junit.Test;
 
 import ua.codegym.serializer.shape.Circle;
+import ua.codegym.serializer.shape.Group;
 import ua.codegym.serializer.shape.Shape;
+import ua.codegym.serializer.shape.Square;
 import ua.codegym.serializer.shape.Triangle;
 
 public class SerializerJsonTest {
@@ -42,4 +44,20 @@ public class SerializerJsonTest {
 		    assertEquals("{\"shapeName\": \"Triangle\", \"values\": {\"xA\":1, \"yA\":1, \"xB\":4, \"yB\":1, \"xC\":3, \"yC\":4}}", output);
 	  }
 
+	 @Test
+		public void verifyThatGroupedShapeJsonWritingCorrectly() throws IOException {
+			// given
+			Group group = new Group();
+			group.add(new Circle(2, 1, 7));
+
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			Serializer xml = SerializerFactory.newJsonSerializer();
+
+			// when
+			xml.serialize(group, out);
+
+			// then
+			String output = new String(out.toByteArray());
+			assertEquals("{\"group\": [{\"shapeName\": \"Circle\", \"values\": {\"x\":2, \"y\":1, \"radius\":7}}]}", output);
+		}
 }
